@@ -13,7 +13,7 @@ const Cart = () => {
           {cart.map((item) => {
             total += item.price;
             return (
-              <div className="cart-items">
+              <div className="cart-items" key={item.id}>
                 <div className="single-cart-item">
                   <img src={item.image} alt={item.title} />
                   {item.title} <br /> <br /> Price: ${item.price}
