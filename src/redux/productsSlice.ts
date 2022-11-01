@@ -24,6 +24,7 @@ export interface ProductsType {
   id: number;
   title: string;
   category: string;
+  description: string;
   image: string;
   price: number;
   rating: any;
@@ -42,7 +43,11 @@ const initialState: InitialState = {
 export const productsSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    removeSelectedProduct: (state) => {
+      state.selectedProduct = null;
+    },
+  },
   extraReducers: (builder) => {
     //products
     builder.addCase(fetchAsyncProducts.pending, () => {
@@ -63,6 +68,7 @@ export const productsSlice = createSlice({
   },
 });
 
+export const { removeSelectedProduct } = productsSlice.actions;
 export const getAllProducts = (state: RootState) => state.products.products;
 export const getProductDetail = (state: RootState) =>
   state.products.selectedProduct;

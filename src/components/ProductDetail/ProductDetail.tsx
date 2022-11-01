@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import {
   fetchAsyncProductDetail,
   getProductDetail,
+  removeSelectedProduct,
 } from "../../redux/productsSlice";
 
 const ProductDetail = () => {
@@ -16,21 +17,35 @@ const ProductDetail = () => {
 
   useEffect(() => {
     dispatch(fetchAsyncProductDetail(id!));
+    return () => {
+      dispatch(removeSelectedProduct());
+    };
   }, [dispatch, id]);
 
-  let renderProduct;
-
-  renderProduct = data ? (
-    <div className="movie-detail-container">
-      <p>{data.title}</p>
-    </div>
-  ) : (
-    <div className="movies-error">
-      <h3>Loading</h3>
+  return (
+    <div>
+      {data ? (
+        <div className="product-container">
+          <div className="product-left">
+            <img src={data.image} alt={data.title} />
+          </div>
+          <div className="product-right">
+            <h3>{data.title}</h3>
+            <p>{data.description}</p>
+            <p>
+              Rating: <b>{data.rating.rate}</b>
+            </p>
+            <p>
+              Price: <b>${data.price}</b>
+            </p>
+            <button>Add to cart</button>
+          </div>
+        </div>
+      ) : (
+        <div>Loading</div>
+      )}
     </div>
   );
-
-  return <div>{data ? <div>{data.title}</div> : <div>Loading </div>}</div>;
 };
 
 export default ProductDetail;
