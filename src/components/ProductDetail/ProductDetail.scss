@@ -14,4 +14,20 @@
   margin-left: 200px;
   max-width: 500px;
   text-align: center;
+
+  button {
+    width: 200px;
+    height: 40px;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+
+    &:hover {
+      transition: 0.2s;
+      background-color: #68646c;
+    }
+  }
 }

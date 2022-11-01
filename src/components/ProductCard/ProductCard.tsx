@@ -11,8 +11,12 @@ const ProductCard = ({ id, title, image, price, rating }: ProductsType) => {
       >
         <img src={image} alt={title} loading="lazy" />
         <h4>{title}</h4>
-        <p>Price: ${price}</p>
-        <p>Rating: {rating.rate}</p>
+        <p>
+          Price: <b>${price}</b>
+        </p>
+        <p>
+          Rating: <b>{rating.rate}</b>
+        </p>
       </Link>
     </div>
   );

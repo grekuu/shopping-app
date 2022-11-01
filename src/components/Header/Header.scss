@@ -1,0 +1,25 @@
+.header {
+  padding: 50px 100px 50px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .store-title {
+    font-size: 28px;
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+  }
+
+  .cart-icon {
+    font-size: 35px;
+    color: black;
+
+    &:hover {
+      transition: 0.2s;
+      font-size: 40px;
+      cursor: pointer;
+    }
+  }
+}
