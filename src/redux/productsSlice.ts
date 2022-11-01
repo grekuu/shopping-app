@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "./store";
 import productsApi from "../common/productsApi";
 
@@ -12,11 +11,19 @@ export const fetchAsyncProducts = createAsyncThunk(
   }
 );
 
+export const fetchAsyncProductDetail = createAsyncThunk(
+  "products/fetchAsyncProductDetail",
+  async (id: string) => {
+    const response = await productsApi.get(`/${id}`);
+    console.log(response.data);
+    return response.data;
+  }
+);
+
 export interface ProductsType {
   id: number;
   title: string;
   category: string;
-  description: string;
   image: string;
   price: number;
   rating: any;
@@ -24,10 +31,12 @@ export interface ProductsType {
 
 interface InitialState {
   products: ProductsType[];
+  selectedProduct: any;
 }
 
 const initialState: InitialState = {
   products: [],
+  selectedProduct: [],
 };
 
 export const productsSlice = createSlice({
@@ -35,6 +44,7 @@ export const productsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    //products
     builder.addCase(fetchAsyncProducts.pending, () => {
       console.log("pending");
     });
@@ -45,8 +55,15 @@ export const productsSlice = createSlice({
     builder.addCase(fetchAsyncProducts.rejected, () => {
       console.log("rejected");
     });
+    //product
+    builder.addCase(fetchAsyncProductDetail.fulfilled, (state, { payload }) => {
+      state.selectedProduct = payload;
+      console.log("fetched");
+    });
   },
 });
 
 export const getAllProducts = (state: RootState) => state.products.products;
+export const getProductDetail = (state: RootState) =>
+  state.products.selectedProduct;
 export default productsSlice.reducer;
