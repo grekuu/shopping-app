@@ -15,8 +15,6 @@ const ProductDetail = () => {
   const data = useAppSelector(getProductDetail);
   const [alert, setAlert] = useState<string>("");
 
-  console.log(data);
-
   useEffect(() => {
     dispatch(fetchAsyncProductDetail(id!));
     return () => {

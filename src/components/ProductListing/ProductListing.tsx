@@ -6,8 +6,6 @@ import "./ProductListing.scss";
 function ProductListing() {
   const products = useAppSelector(getAllProducts);
 
-  console.log(products);
-
   return (
     <div>
       <div className="products-wrapper">
