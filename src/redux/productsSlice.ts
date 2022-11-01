@@ -31,12 +31,12 @@ export interface ProductsType {
 
 interface InitialState {
   products: ProductsType[];
-  selectedProduct: any;
+  selectedProduct: null | ProductsType;
 }
 
 const initialState: InitialState = {
   products: [],
-  selectedProduct: [],
+  selectedProduct: null,
 };
 
 export const productsSlice = createSlice({

@@ -18,16 +18,19 @@ const ProductDetail = () => {
     dispatch(fetchAsyncProductDetail(id!));
   }, [dispatch, id]);
 
-  return (
-    <div>
-      <div>
-        {/* {data.map((item: any) => {
-          return <div>{item.title}</div>;
-        })} */}
-        {data.title}
-      </div>
+  let renderProduct;
+
+  renderProduct = data ? (
+    <div className="movie-detail-container">
+      <p>{data.title}</p>
+    </div>
+  ) : (
+    <div className="movies-error">
+      <h3>Loading</h3>
     </div>
   );
+
+  return <div>{data ? <div>{data.title}</div> : <div>Loading </div>}</div>;
 };
 
 export default ProductDetail;
