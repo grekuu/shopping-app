@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { useEffect } from "react";
 import {
+  addToCart,
   fetchAsyncProductDetail,
   getProductDetail,
   removeSelectedProduct,
@@ -22,6 +23,10 @@ const ProductDetail = () => {
     };
   }, [dispatch, id]);
 
+  function handleAdd() {
+    dispatch(addToCart(data!));
+  }
+
   return (
     <div>
       {data ? (
@@ -38,7 +43,7 @@ const ProductDetail = () => {
             <p>
               Price: <b>${data.price}</b>
             </p>
-            <button>Add to cart</button>
+            <button onClick={handleAdd}>Add to cart</button>
           </div>
         </div>
       ) : (

@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { RootState } from "./store";
 import productsApi from "../common/productsApi";
+import type { PayloadAction } from "@reduxjs/toolkit";
 
 export const fetchAsyncProducts = createAsyncThunk(
   "products/fetchAsyncProducts",
@@ -33,11 +34,13 @@ export interface ProductsType {
 interface InitialState {
   products: ProductsType[];
   selectedProduct: null | ProductsType;
+  cart: ProductsType[];
 }
 
 const initialState: InitialState = {
   products: [],
   selectedProduct: null,
+  cart: [],
 };
 
 export const productsSlice = createSlice({
@@ -46,6 +49,9 @@ export const productsSlice = createSlice({
   reducers: {
     removeSelectedProduct: (state) => {
       state.selectedProduct = null;
+    },
+    addToCart: (state, action: PayloadAction<ProductsType>) => {
+      state.cart.push(action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -68,7 +74,8 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { removeSelectedProduct } = productsSlice.actions;
+export const { removeSelectedProduct, addToCart } = productsSlice.actions;
+export const getCart = (state: RootState) => state.products.cart;
 export const getAllProducts = (state: RootState) => state.products.products;
 export const getProductDetail = (state: RootState) =>
   state.products.selectedProduct;
