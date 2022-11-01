@@ -12,18 +12,18 @@ export const fetchAsyncProducts = createAsyncThunk(
   }
 );
 
-interface Products {
+export interface ProductsType {
   id: number;
   title: string;
   category: string;
   description: string;
   image: string;
   price: number;
-  rating: Object;
+  rating: any;
 }
 
 interface InitialState {
-  products: Products[];
+  products: ProductsType[];
 }
 
 const initialState: InitialState = {

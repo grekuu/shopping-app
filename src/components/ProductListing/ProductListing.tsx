@@ -1,5 +1,6 @@
 import { useAppSelector } from "../../redux/hooks";
 import { getAllProducts } from "../../redux/productsSlice";
+import ProductCard from "../ProductCard/ProductCard";
 import "./ProductListing.scss";
 
 function ProductListing() {
@@ -11,7 +12,7 @@ function ProductListing() {
     <div>
       <div className="products-wrapper">
         {products.map((product) => {
-          return <div>{product.title}</div>;
+          return <ProductCard key={product.id} {...product}></ProductCard>;
         })}
       </div>
     </div>
