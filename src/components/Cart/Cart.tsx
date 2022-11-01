@@ -1,4 +1,3 @@
-import { iteratorSymbol } from "immer/dist/internal";
 import { useAppSelector } from "../../redux/hooks";
 import { getCart } from "../../redux/productsSlice";
 import "./Cart.scss";
@@ -17,7 +16,7 @@ const Cart = () => {
               <div className="cart-items">
                 <div className="single-cart-item">
                   <img src={item.image} alt={item.title} />
-                  {item.title} <br /> Price: ${item.price}
+                  {item.title} <br /> <br /> Price: ${item.price}
                 </div>
               </div>
             );

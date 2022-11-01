@@ -28,7 +28,7 @@ const ProductDetail = () => {
   }
 
   return (
-    <div>
+    <div className="product-main-container">
       {data ? (
         <div className="product-container">
           <div className="product-left">
