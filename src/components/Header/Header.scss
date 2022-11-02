@@ -29,3 +29,23 @@
     padding: 30px 20px 30px 20px;
   }
 }
+
+.header-right {
+  position: relative;
+}
+
+.cart-num {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  background-color: red;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}

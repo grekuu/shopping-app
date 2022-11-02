@@ -7,7 +7,6 @@ export const fetchAsyncProducts = createAsyncThunk(
   "products/fetchAsyncProducts",
   async () => {
     const response = await productsApi.get("");
-
     return response.data;
   }
 );
@@ -16,7 +15,6 @@ export const fetchAsyncProductDetail = createAsyncThunk(
   "products/fetchAsyncProductDetail",
   async (id: string) => {
     const response = await productsApi.get(`/${id}`);
-
     return response.data;
   }
 );
@@ -35,12 +33,14 @@ interface InitialState {
   products: ProductsType[];
   selectedProduct: null | ProductsType;
   cart: ProductsType[];
+  cartItemsNumber: number;
 }
 
 const initialState: InitialState = {
   products: [],
   selectedProduct: null,
   cart: [],
+  cartItemsNumber: 0,
 };
 
 export const productsSlice = createSlice({
@@ -52,6 +52,9 @@ export const productsSlice = createSlice({
     },
     addToCart: (state, action: PayloadAction<ProductsType>) => {
       state.cart.push(action.payload);
+    },
+    addCartItemsNumber: (state) => {
+      state.cartItemsNumber += 1;
     },
   },
   extraReducers: (builder) => {
@@ -68,8 +71,11 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { removeSelectedProduct, addToCart } = productsSlice.actions;
+export const { removeSelectedProduct, addToCart, addCartItemsNumber } =
+  productsSlice.actions;
 export const getCart = (state: RootState) => state.products.cart;
+export const getCartItemsNumber = (state: RootState) =>
+  state.products.cartItemsNumber;
 export const getAllProducts = (state: RootState) => state.products.products;
 export const getProductDetail = (state: RootState) =>
   state.products.selectedProduct;

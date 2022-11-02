@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { useEffect, useState } from "react";
 import {
+  addCartItemsNumber,
   addToCart,
   fetchAsyncProductDetail,
   getProductDetail,
@@ -25,6 +26,7 @@ const ProductDetail = () => {
   function handleAdd() {
     dispatch(addToCart(data!));
     setAlert("Item added successfully");
+    dispatch(addCartItemsNumber());
   }
 
   return (
@@ -48,7 +50,9 @@ const ProductDetail = () => {
           </div>
         </div>
       ) : (
-        <div>Loading</div>
+        <div className="loader-container">
+          <div className="loader"></div>
+        </div>
       )}
     </div>
   );
