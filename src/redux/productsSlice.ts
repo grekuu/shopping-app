@@ -53,8 +53,12 @@ export const productsSlice = createSlice({
     addToCart: (state, action: PayloadAction<ProductsType>) => {
       state.cart.push(action.payload);
     },
-    addCartItemsNumber: (state) => {
-      state.cartItemsNumber += 1;
+    addCartItemsNumber: (state, action: PayloadAction<number>) => {
+      state.cartItemsNumber += action.payload;
+    },
+    removeFromCart: (state, action) => {
+      const itemId = state.cart.findIndex((item) => item.id === action.payload);
+      state.cart.splice(itemId, 1);
     },
   },
   extraReducers: (builder) => {
@@ -71,8 +75,12 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { removeSelectedProduct, addToCart, addCartItemsNumber } =
-  productsSlice.actions;
+export const {
+  removeSelectedProduct,
+  addToCart,
+  addCartItemsNumber,
+  removeFromCart,
+} = productsSlice.actions;
 export const getCart = (state: RootState) => state.products.cart;
 export const getCartItemsNumber = (state: RootState) =>
   state.products.cartItemsNumber;

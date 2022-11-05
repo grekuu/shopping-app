@@ -26,7 +26,7 @@ const ProductDetail = () => {
   function handleAdd() {
     dispatch(addToCart(data!));
     setAlert("Item added successfully");
-    dispatch(addCartItemsNumber());
+    dispatch(addCartItemsNumber(1));
   }
 
   return (
