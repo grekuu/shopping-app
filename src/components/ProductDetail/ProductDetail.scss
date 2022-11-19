@@ -5,9 +5,16 @@
   align-items: center;
   overflow: hidden;
   padding: 20px;
+  height: 70vh;
 
   img {
     max-width: 100%;
+  }
+}
+
+.product-left {
+  img {
+    max-height: 60vh;
   }
 }
 
