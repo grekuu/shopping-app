@@ -32,7 +32,7 @@ const Cart = () => {
               </div>
             );
           })}
-          <p className="total-price">Total: ${total}</p>
+          <p className="total-price">Total: ${Math.round(total * 100) / 100}</p>
         </div>
       ) : (
         <div>Loading</div>

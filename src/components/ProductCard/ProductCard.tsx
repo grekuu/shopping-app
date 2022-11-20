@@ -10,7 +10,7 @@ const ProductCard = ({ id, title, image, price, rating }: ProductsType) => {
         style={{ textDecoration: "none", color: "black" }}
       >
         <img src={image} alt={title} loading="lazy" />
-        <h4>{title}</h4>
+        <h4>{title.substring(0, 19)}...</h4>
         <p>
           Price: <b>${price}</b>
         </p>
