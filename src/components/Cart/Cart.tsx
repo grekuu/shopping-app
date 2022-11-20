@@ -26,7 +26,8 @@ const Cart = () => {
               <div className="cart-items" key={id}>
                 <div className="single-cart-item">
                   <img src={item.image} alt={item.title} />
-                  {item.title} <br /> <br /> Price: ${item.price}
+                  {item.title.substring(0, 19)}... <br /> <br /> Price: $
+                  {item.price}
                   <button onClick={() => handleDelete(item.id)}>X</button>
                 </div>
               </div>
