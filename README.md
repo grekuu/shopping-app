@@ -19,7 +19,7 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ## Screenshots
-![Przechwytywanie](https://user-images.githubusercontent.com/91375853/215695190-31b8f71e-d2b7-4c43-8ef2-3b4c4c911387.PNG)
+![Przechwytywanie](https://user-images.githubusercontent.com/91375853/215695717-55462fed-86ef-483e-b34c-db672144e18a.PNG)
 
 ## Project status
 Project is: complete.
